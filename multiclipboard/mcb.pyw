@@ -69,3 +69,29 @@ def copy(filename: str, key: str):
         rc = 1
     finally:
         return rc
+
+
+def delete_key(filename: str, key: str):
+    """
+    Delete a key from the shelf.
+
+    Delete the specified key from the shelf.
+
+    Parameters:
+        filename: the filename of the shelf where the key exists
+        key: the key to delete
+
+    Return:
+        0 -- Key found and successfully deleted
+        1 -- Key not found
+    """
+
+    rc: int = 0
+    try:
+        filename.pop(key)
+    except KeyError:
+        logging.error("'%s' not found in '%s' :(. Did you mean a different key?",
+                key, filename)
+        rc = 1
+    finally:
+        return rc
