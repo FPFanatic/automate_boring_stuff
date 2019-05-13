@@ -22,7 +22,7 @@ import sys
 logging.basicConfig(level=logging.DEBUG,
         format='[%(levelname)s] %(filename)s:%(lineno)d %(message)s')
 
-def add(filename: str, key: str, content: str):
+def add(filename: str, key: str, content: str) -> bool:
     """
     Add the specified contents to the shelf.
 
@@ -47,7 +47,7 @@ def add(filename: str, key: str, content: str):
         return rc
 
 
-def copy(filename: str, key: str):
+def copy(filename: str, key: str) -> int:
     """
     Copy the contents of the specified key.
 
@@ -71,7 +71,7 @@ def copy(filename: str, key: str):
         return rc
 
 
-def confirm_delete(filename: str, key: str):
+def confirm_delete(filename: str, key: str) -> bool:
     """
     Display message to confirm key deletion.
 
@@ -91,7 +91,7 @@ def confirm_delete(filename: str, key: str):
     return rc
 
 
-def delete_key(filename: str, key: str):
+def delete_key(filename: str, key: str) -> int:
     """
     Delete a key from the shelf.
 
