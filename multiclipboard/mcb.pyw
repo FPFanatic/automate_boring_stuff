@@ -45,3 +45,27 @@ def add(filename: str, key: str, content: str):
         rc = False
     finally:
         return rc
+
+
+def copy(filename: str, key: str):
+    """
+    Copy the contents of the specified key.
+
+    Parameters:
+        filename: the filename of the shelf to retrieve fromt
+        key: The key to retrieve and copy from
+
+    Return:
+        0 -- key found, contents copied successfully
+        1 -- key not found
+    """
+
+    rc: int = 0
+
+    try:
+        pyperclip.copy(filename[key])
+    except KeyError:
+        logging.error("'%s' not found in %s. :( Did you mean another key?", key, filename)
+        rc = 1
+    finally:
+        return rc
