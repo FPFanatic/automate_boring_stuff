@@ -115,3 +115,38 @@ def delete_key(filename: str, key: str) -> int:
         rc = 1
     finally:
         return rc
+
+
+def get_interactive(filename: str) -> None:
+    """
+    Interactively prompt user for a key and content.
+
+    Use stdin to interactively get a key and content from the user. If the user
+    specifies a key that already exists, will ask for confirmation before
+    overwriting the old contents.
+
+    Parameters:
+        filename: the shelf to check in, and save to
+
+    Return:
+        None. Because the all information is coming from stdin, copying is not
+        involved. Additionally, the user is prompted if the key they want
+        already exists -- they overwrite at their own discretion.
+    """
+
+    content: str = input("Enter the text you want to save: ")
+    key: str = input("Enter the key you want to save it as: ")
+
+    overwrite: str = "y"
+
+    if (key in filename.keys()):
+        print(f"'{key}' already exists in {filename}")
+        print(f"content: '{content}'")
+        overwrite = input("Overwrite its contents? (y/n) ")
+        if (overwrite[0].lower() == 'n'):
+            print("Exiting...")
+            return
+        else:
+            pass
+    else:
+        filename[key] = content
