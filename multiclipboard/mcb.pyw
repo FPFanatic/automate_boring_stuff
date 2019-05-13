@@ -150,3 +150,20 @@ def get_interactive(filename: str) -> None:
             pass
     else:
         filename[key] = content
+
+
+def list_keys(filename: str) -> None:
+    """
+    List all keys in the specified file
+
+    Parameters:
+        filename: the shelf to search and list
+
+    Return:
+        None
+    """
+
+    for key in filename.keys():
+        print(f"Key: {key}")
+        print(f"Contents: {filename[key]}")
+        print()
