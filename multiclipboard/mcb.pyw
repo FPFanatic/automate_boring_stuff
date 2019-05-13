@@ -71,6 +71,26 @@ def copy(filename: str, key: str):
         return rc
 
 
+def confirm_delete(filename: str, key: str):
+    """
+    Display message to confirm key deletion.
+
+    Parameters:
+        filename: the shelf where the key exists
+        key: the key pending deletion
+
+    Return:
+        True if the key is to be deleted, False otherwise
+    """
+    rc: bool = False
+    confirm: str = input(f"Delete {key} from {filename}? (y/n) ")
+
+    if (confirm[0].lower() == 'y'):
+        rc = True
+
+    return rc
+
+
 def delete_key(filename: str, key: str):
     """
     Delete a key from the shelf.
