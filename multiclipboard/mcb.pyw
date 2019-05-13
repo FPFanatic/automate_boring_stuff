@@ -12,3 +12,36 @@
 #                                       and content
 #           -l, --list                - List all keys and their contents
 #           -p, --purge               - Delete *ALL* keys and contents
+
+import argparse
+import logging
+import pyperclip
+import shelve
+import sys
+
+logging.basicConfig(level=logging.DEBUG,
+        format='[%(levelname)s] %(filename)s:%(lineno)d %(message)s')
+
+def add(filename: str, key: str, content: str):
+    """
+    Add the specified contents to the shelf.
+
+    Add the content to the specified shelf, saved as the specified key.
+
+    Parameters:
+        filename: The filename of the shelf to save to
+        key: The string to use as the key
+        content: The actual content to save
+
+    Return:
+        True if successful, False otherwise
+    """
+    rc: bool = False
+    try:
+        filename[key] = content
+        rc = True
+    except:
+        logging.error("%s", sys.exc_info())
+        rc = False
+    finally:
+        return rc
