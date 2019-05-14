@@ -167,3 +167,33 @@ def list_keys(filename: str) -> None:
         print(f"Key: {key}")
         print(f"Contents: {filename[key]}")
         print()
+
+
+def purge(filename: str) -> int:
+    """
+    Delete all keys in the shelf.
+
+    Delete all keys in shelf specified by filename. Only prompts for
+    confirmation before the first delete operation.
+
+    Parameters:
+        filename: the shelf to purge
+
+    Return:
+        The number of keys deleted
+    """
+
+    rc: int = 0
+    confirm: str = "n"
+
+    print("This will delete *ALL* keys and content from the shelf.")
+    confirm = input("Are you sure you want to do this? (y/n) ")
+
+    if (confirm[0],lower() == "y"):
+        for key in filename.keys():
+            filename.pop(key)
+            rc += 1
+    else:
+        print("Purging aborted.")
+
+    return rc
