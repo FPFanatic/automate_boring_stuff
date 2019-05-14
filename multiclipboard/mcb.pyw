@@ -264,13 +264,3 @@ def setup_parser() -> "ArgumentParser":
     )
 
     return parser
-
-
-def main():
-    filename: str = "mcb"
-
-    if (not os.path.exists(filename)):
-        initialize_shelf(filename)
-
-    parser = setup_parser()
-    args = parser.parse_args()
