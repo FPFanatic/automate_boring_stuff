@@ -238,9 +238,9 @@ def setup_parser() -> "ArgumentParser":
         A reference to the created parser
     """
 
-    parser = argparser.ArgumentParser()
+    parser = argparse.ArgumentParser()
 
-    parser.add_argument("-a", "--add", nargs="2",
+    parser.add_argument("-a", "--add", nargs=2,
             metavar=('<content>', '<key>'),
             help="Store <content> as <key>"
     )
@@ -264,3 +264,20 @@ def setup_parser() -> "ArgumentParser":
     )
 
     return parser
+
+
+def main():
+    filename: str = "mcb"
+
+    if (not os.path.exists(filename)):
+        initialize_shelf(filename)
+
+    parser = setup_parser()
+    args = parser.parse_args()
+
+    if (len(sys.argv) == 1):
+        parser.parse_args(['-h'])
+
+
+if __name__ == "__main__":
+    main()
