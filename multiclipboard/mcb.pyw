@@ -53,7 +53,7 @@ def initialize_shelf(filename: str) -> int:
         return rc
 
 
-def add(filename: "shelf", key: str, content: str) -> bool:
+def add(filename: "shelf", content: str, key: str) -> bool:
     """
     Add the specified contents to the shelf.
 
