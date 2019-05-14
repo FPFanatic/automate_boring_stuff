@@ -228,3 +228,39 @@ def purge(filename: str) -> int:
         print("Purging aborted.")
 
     return rc
+
+
+def setup_parser() -> "ArgumentParser":
+    """
+    Set up the option parser.
+
+    Return:
+        A reference to the created parser
+    """
+
+    parser = argparser.ArgumentParser()
+
+    parser.add_argument("-a", "--add", nargs="2",
+            metavar=('<content>', '<key>'),
+            help="Store <content> as <key>"
+    )
+
+    parser.add_argument("-c", "--copy", metavar='<key>',
+            help="Copy <key>'s contents to clipboard"
+    )
+
+    parser.add_argument("-d", "--delete", nargs="*", metavar="<keys>",
+            help="Delete selected keys"
+    )
+
+    parser.add_argument("-i", "--interactive",
+            help="Interactively enter a key and content"
+    )
+
+    parser.add_argument("-l", "--list", help="List all keys and content")
+
+    parser.add_argument("-p", "--purge",
+            help="Delete *ALL* keys and contents"
+    )
+
+    return parser
