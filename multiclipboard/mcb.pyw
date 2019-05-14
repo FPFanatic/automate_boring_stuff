@@ -296,7 +296,7 @@ def main():
             rc: bool = add(shelf, content, key)
 
         elif (args.copy):
-            key: str = args.copy[0]
+            key: str = args.copy
             rc: int = copy(shelf, key)
 
             if (rc == 1):
