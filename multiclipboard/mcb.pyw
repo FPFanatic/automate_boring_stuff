@@ -41,8 +41,8 @@ def initialize_shelf(filename: str) -> int:
 
     try:
         if (not os.path.exists(filename)):
-            shelve.open(filename)
-            filename.close()
+            shelf = shelve.open(filename)
+            shelf.close()
         elif (os.path.exists(filename)):
             logging.error("Shelf '%s' already exists.", filename)
             rc = 1
