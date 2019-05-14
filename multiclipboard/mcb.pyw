@@ -280,6 +280,44 @@ def main():
     if (len(sys.argv) == 1):
         parser.parse_args(['-h'])
 
+    with shelve.open(filename) as shelf:
+
+        if (args.add):
+            content: str = args.add[0]
+            key: str = args.add[1]
+
+            rc: bool = add(shelf, content, key)
+
+        elif (args.copy):
+            key: str = args.copy[0]
+            rc: int = copy(shelf, key)
+
+            if (rc == 1):
+                list_keys(shelf)
+
+        elif (args.delete):
+            for key in args.delete:
+                go_ahead: bool = confirm_delete(shelf, key)
+                if (go_ahead):
+                    rc: int = delete_key(shelf, key)
+                    if (rc == 1):
+                        list_keys(shelf)
+
+        elif (args.interactive):
+            get_interactive(shelf)
+
+        elif (args.list):
+            list_keys(shelf)
+
+        elif (args.purge):
+            rc: int = purge(shelf)
+            if (rc == 0):
+                print("It looks like you didn't need to do that...")
+                print("The shelf was already empty...")
+            else:
+                print("Purging successful.")
+                print(f"Deleted {rc} keys.")
+
 
 if __name__ == "__main__":
     main()
