@@ -171,16 +171,23 @@ def get_interactive(filename: "shelf") -> None:
     overwrite: str = "y"
 
     if (key in filename.keys()):
-        print(f"'{key}' already exists in {filename}")
-        print(f"content: '{content}'")
+        print(f"'{key}' already exists in the shelf")
+        print(f"content: '{filename[key]}'")
         overwrite = input("Overwrite its contents? (y/n) ")
         if (overwrite[0].lower() == 'n'):
             print("Exiting...")
             return
         else:
-            pass
+            filename[key] = content
     else:
-        filename[key] = content
+        print(f"Your key is '{key}' (without quotes).")
+        print(f"Your content is '{content}' (without quotes).")
+        try:
+            input("If this is wrong, press CTRL-C to abort.\n")
+            filename[key] = content
+        except KeyboardInterrupt:
+            print("\nAborting...")
+            return
 
 
 def list_keys(filename: "shelf") -> None:
