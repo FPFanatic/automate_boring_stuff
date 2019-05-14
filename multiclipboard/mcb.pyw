@@ -15,12 +15,43 @@
 
 import argparse
 import logging
+import os
 import pyperclip
 import shelve
 import sys
 
 logging.basicConfig(level=logging.DEBUG,
         format='[%(levelname)s] %(filename)s:%(lineno)d %(message)s')
+
+def initialize_shelf(filename: str) -> int:
+    """
+    Create a shelf file.
+
+    Create an empty shelf with the specified filename.
+
+    Parameters:
+        filename: the string to use as the shelf's name
+
+    Return:
+        0 -- shelf created successfully
+        1 -- shelf with name 'filename' already exists
+        2 -- other -- see stack trace
+    """
+    rc: int = 0
+
+    try:
+        if (not os.path.exists(filename)):
+            shelve.open(filename)
+            filename.close()
+        elif (os.path.exists(filename)):
+            logging.error("Shelf '%s' already exists.", filename)
+            rc = 1
+    except:
+        logging.error("Unkown error. Stacktrace: %s", sys.exc_info())
+        rc = 2
+    finally:
+        return rc
+
 
 def add(filename: str, key: str, content: str) -> bool:
     """
