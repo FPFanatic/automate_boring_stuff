@@ -254,12 +254,14 @@ def setup_parser() -> "ArgumentParser":
     )
 
     parser.add_argument("-i", "--interactive",
+            action="store_true",
             help="Interactively enter a key and content"
     )
 
-    parser.add_argument("-l", "--list", help="List all keys and content")
+    parser.add_argument("-l", "--list", action="store_true",
+            help="List all keys and content")
 
-    parser.add_argument("-p", "--purge",
+    parser.add_argument("-p", "--purge", action="store_true",
             help="Delete *ALL* keys and contents"
     )
 
