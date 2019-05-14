@@ -114,7 +114,7 @@ def confirm_delete(filename: "shelf", key: str) -> bool:
         True if the key is to be deleted, False otherwise
     """
     rc: bool = False
-    confirm: str = input(f"Delete {key} from {filename}? (y/n) ")
+    confirm: str = input(f"Delete {key} from shelf? (y/n) ")
 
     if (confirm[0].lower() == 'y'):
         rc = True
