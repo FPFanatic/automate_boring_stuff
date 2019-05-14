@@ -53,7 +53,7 @@ def initialize_shelf(filename: str) -> int:
         return rc
 
 
-def add(filename: str, key: str, content: str) -> bool:
+def add(filename: "shelf", key: str, content: str) -> bool:
     """
     Add the specified contents to the shelf.
 
@@ -78,7 +78,7 @@ def add(filename: str, key: str, content: str) -> bool:
         return rc
 
 
-def copy(filename: str, key: str) -> int:
+def copy(filename: "shelf", key: str) -> int:
     """
     Copy the contents of the specified key.
 
@@ -102,7 +102,7 @@ def copy(filename: str, key: str) -> int:
         return rc
 
 
-def confirm_delete(filename: str, key: str) -> bool:
+def confirm_delete(filename: "shelf", key: str) -> bool:
     """
     Display message to confirm key deletion.
 
@@ -122,7 +122,7 @@ def confirm_delete(filename: str, key: str) -> bool:
     return rc
 
 
-def delete_key(filename: str, key: str) -> int:
+def delete_key(filename: "shelf", key: str) -> int:
     """
     Delete a key from the shelf.
 
@@ -148,7 +148,7 @@ def delete_key(filename: str, key: str) -> int:
         return rc
 
 
-def get_interactive(filename: str) -> None:
+def get_interactive(filename: "shelf") -> None:
     """
     Interactively prompt user for a key and content.
 
@@ -183,7 +183,7 @@ def get_interactive(filename: str) -> None:
         filename[key] = content
 
 
-def list_keys(filename: str) -> None:
+def list_keys(filename: "shelf") -> None:
     """
     List all keys in the specified file
 
@@ -200,7 +200,7 @@ def list_keys(filename: str) -> None:
         print()
 
 
-def purge(filename: str) -> int:
+def purge(filename: "shelf") -> int:
     """
     Delete all keys in the shelf.
 
