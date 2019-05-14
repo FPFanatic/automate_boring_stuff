@@ -21,7 +21,7 @@ import shelve
 import sys
 
 logging.basicConfig(level=logging.DEBUG,
-        format='[%(levelname)s] %(filename)s:%(lineno)d %(message)s')
+        format='[%(levelname)s] %(filename)s:%(lineno)d\n%(message)s')
 
 def initialize_shelf(filename: str) -> int:
     """
