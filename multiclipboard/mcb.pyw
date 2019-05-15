@@ -19,6 +19,7 @@ import os
 import pyperclip
 import shelve
 import sys
+import textwrap
 
 logging.basicConfig(level=logging.DEBUG,
         format='[%(levelname)s] %(filename)s:%(lineno)d\n%(message)s')
@@ -274,20 +275,27 @@ def setup_parser() -> "ArgumentParser":
 
     parser.add_argument("-a", "--add", nargs=2,
             metavar=('<content>', '<key>'),
-            help="Store <content> as <key>\n \n"
+            help="Save <content> to the shelf as <key>\n \n"
     )
 
     parser.add_argument("-c", "--copy", metavar='<key>',
-            help="Copy <key>'s contents to clipboard\n \n"
+            help="Copy <key>'s contents from the shelf to the clipboard\n \n"
     )
 
     parser.add_argument("-d", "--delete", nargs="+", metavar="<keys>",
-            help="Delete selected keys\n \n"
+            help=textwrap.dedent("""\
+                    Delete the selected keys. This should be a list
+                    of keys separated by spaces \n \n
+                    """)
     )
 
     parser.add_argument("-i", "--interactive",
             action="store_true",
-            help="Interactively enter a key and content\n \n"
+            help=textwrap.dedent("""\
+                    Interactively enter a key and content. This
+                    differs from -a by allowing you to confirm
+                    that you've entered things correctly, or abort
+                    if not.\n \n""")
     )
 
     parser.add_argument("-l", "--list", action="store_true",
