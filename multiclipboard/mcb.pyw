@@ -248,7 +248,10 @@ def setup_parser() -> "ArgumentParser":
         A reference to the created parser
     """
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(usage="python3 %(prog)s [options]",
+            description="""Clipboard persistence -- save/load text from/to
+            the clipboard"""
+    )
 
     parser.add_argument("-a", "--add", nargs=2,
             metavar=('<content>', '<key>'),
