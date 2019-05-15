@@ -281,7 +281,7 @@ def setup_parser() -> "ArgumentParser":
             help="Copy <key>'s contents to clipboard"
     )
 
-    parser.add_argument("-d", "--delete", nargs="*", metavar="<keys>",
+    parser.add_argument("-d", "--delete", nargs="+", metavar="<keys>",
             help="Delete selected keys"
     )
 
