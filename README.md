@@ -1,5 +1,3 @@
-# automate_boring_stuff
+# multiclipboard
 
-My versions of selected projects from _Automate the Boring Stuff with Python_ by Al Sweigart.
-
-More projects TBA
+My versions of multiclipboard from _Automate the Boring Stuff with Python_ by Al Sweigart.
