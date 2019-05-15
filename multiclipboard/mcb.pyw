@@ -268,33 +268,33 @@ def setup_parser() -> "ArgumentParser":
     """
 
     parser = argparse.ArgumentParser(usage="python3 %(prog)s [options]",
-            description="""Clipboard persistence -- save/load text from/to
-            the clipboard"""
+            formatter_class=argparse.RawTextHelpFormatter,
+            description="Clipboard persistence -- save/load text from/to the clipboard"
     )
 
     parser.add_argument("-a", "--add", nargs=2,
             metavar=('<content>', '<key>'),
-            help="Store <content> as <key>"
+            help="Store <content> as <key>\n \n"
     )
 
     parser.add_argument("-c", "--copy", metavar='<key>',
-            help="Copy <key>'s contents to clipboard"
+            help="Copy <key>'s contents to clipboard\n \n"
     )
 
     parser.add_argument("-d", "--delete", nargs="+", metavar="<keys>",
-            help="Delete selected keys"
+            help="Delete selected keys\n \n"
     )
 
     parser.add_argument("-i", "--interactive",
             action="store_true",
-            help="Interactively enter a key and content"
+            help="Interactively enter a key and content\n \n"
     )
 
     parser.add_argument("-l", "--list", action="store_true",
-            help="List all keys and content")
+            help="List all keys and content\n \n")
 
     parser.add_argument("-p", "--purge", action="store_true",
-            help="Delete *ALL* keys and contents"
+            help="Delete *ALL* keys and contents\n \n"
     )
 
     return parser
