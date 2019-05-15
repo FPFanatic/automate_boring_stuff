@@ -246,9 +246,10 @@ def purge(filename: "shelf") -> int:
     confirm: str = "n"
 
     print("This will delete *ALL* keys and content from the shelf.")
-    confirm = input("Are you sure you want to do this? (y/n) ")
+    print("Are you sure you want to do this? (y/n) ")
+    confirm = input("Blank is equivalent to yes.\n")
 
-    if (confirm[0].lower() == "y"):
+    if (len(confirm) == 0 or confirm[0].lower() == "y"):
         for key in filename.keys():
             filename.pop(key)
             rc += 1
