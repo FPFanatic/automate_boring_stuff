@@ -180,10 +180,13 @@ def get_interactive(filename: "shelf") -> None:
         else:
             filename[key] = content
     else:
-        print(f"Your key is '{key}' (without quotes).")
-        print(f"Your content is '{content}' (without quotes).")
+        print()
+        print(f"Your key is {key} .")
+        print(f"Your content is {content} .")
+        print()
         try:
-            input("If this is wrong, press CTRL-C to abort.\n")
+            print("If this is wrong, press CTRL-C to abort.")
+            input("Else, press ENTER\n")
             filename[key] = content
         except KeyboardInterrupt:
             print("\nAborting...")
