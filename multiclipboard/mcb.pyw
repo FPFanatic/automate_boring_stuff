@@ -97,12 +97,21 @@ def copy(filename: "shelf", key: str) -> int:
     Return:
         0 -- key found, contents copied successfully
         1 -- key not found
+        2 -- Operation aborted with CTRL-C
     """
 
     rc: int = 0
 
+    print(f"Key {key} contains the following:")
+    print(f"{filename[key]}\n")
+    print("Is this what you want?")
+    print("Press Enter to proceed.")
     try:
+        input("Otherwise, press CTRL-C to abort.\n")
         pyperclip.copy(filename[key])
+    except KeyboardInterrupt:
+        print("\nAborted.")
+        rc = 2
     except KeyError:
         logging.error("'%s' not found in %s. :( Did you mean another key?", key, filename)
         rc = 1
@@ -313,7 +322,7 @@ def main():
             key: str = args.copy
             rc: int = copy(shelf, key)
 
-            if (rc == 1):
+            if (rc == 1 or rc == 2):
                 list_keys(shelf)
 
         elif (args.delete):
