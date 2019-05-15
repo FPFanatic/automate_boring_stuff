@@ -68,9 +68,17 @@ def add(filename: "shelf", content: str, key: str) -> bool:
         True if successful, False otherwise
     """
     rc: bool = False
+
+    if (key in filename.keys()):
+        print(f"Key {key} already exists.")
+        print(f"It contains: {filename[key]}")
+        print("If you want to overwrite the contents, press ENTER.")
     try:
+        input("Otherwise, press CTRL-C to abort.\n")
         filename[key] = content
         rc = True
+    except KeyboardInterrupt:
+        print("\nAborted.")
     except:
         logging.error("%s", sys.exc_info())
         rc = False
