@@ -1,10 +1,10 @@
 #! python3
-# mcb_original.pyw - Saves and loads pieces of text to the clipboard
+# mcb_original.py - Saves and loads pieces of text to the clipboard
 #                   *** OLD VERSION WITHOUT ARGPARSE
-# Usage:            python3 mcb_original.pyw save <keyword> - Saves clipboard contents to
-#                                                             keyword
-#                   python3 mcb_original.pyw <keyword>      - Loads keyword to clipboard
-#                   python3 mcb_original.pyw list           - Loads all keywords to clipboard
+# Usage:            python3 mcb_original.py save <keyword> - Saves clipboard contents to
+#                                                            keyword
+#                   python3 mcb_original.py <keyword>      - Loads keyword to clipboard
+#                   python3 mcb_original.py list           - Loads all keywords to clipboard
 
 import pyperclip
 import shelve
