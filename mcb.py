@@ -107,7 +107,7 @@ def copy(filename: "shelf", key: str) -> int:
     print(f"Key {key} contains the following:")
     print(f"{filename[key]}\n")
     print("Is this what you want?")
-    print("Press Enter to proceed.")
+    print("Press ENTER to proceed.")
     try:
         input("Otherwise, press CTRL-C to abort.\n")
         pyperclip.copy(filename[key])
