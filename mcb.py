@@ -223,10 +223,13 @@ def list_keys(filename: "shelf") -> None:
         None
     """
 
-    for key in filename.keys():
-        print(f"Key: {key}")
-        print(f"Contents: {filename[key]}")
-        print()
+    if (len(filename.keys()) == 0):
+        print("There are no keys in the specified file.")
+    else:
+        for key in filename.keys():
+            print(f"Key: {key}")
+            print(f"Contents: {filename[key]}")
+            print()
 
 
 def purge(filename: "shelf") -> int:
