@@ -223,10 +223,11 @@ def list_keys(filename: "shelf") -> None:
         None
     """
 
-    if (len(filename.keys()) == 0):
+    all_keys = filename.keys()
+    if (len(all_keys) == 0):
         print("There are no keys in the specified file.")
     else:
-        for key in filename.keys():
+        for key in all_keys:
             print(f"Key: {key}")
             print(f"Contents: {filename[key]}")
             print()
